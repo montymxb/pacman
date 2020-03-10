@@ -1,11 +1,11 @@
 var PATHS = new Array();
 var PATHS_CANVAS_CONTEXT = null;
 
-function initPaths() { 
+function initPaths() {
 	var canvas = document.getElementById('canvas-paths');
 	canvas.setAttribute('width', '550');
 	canvas.setAttribute('height', '550');
-	if (canvas.getContext) { 
+	if (canvas.getContext) {
 		PATHS_CANVAS_CONTEXT = canvas.getContext('2d');
 	}
 
@@ -19,7 +19,7 @@ function initPaths() {
 	PATHS.push("30,522-518,522");
 	PATHS.push("238,258-314,258");
 	PATHS.push("276,204-276,258");
-	
+
 	// LEFT
 	PATHS.push("128,26-128,470");
 	PATHS.push("30,26-244,26");
@@ -40,7 +40,7 @@ function initPaths() {
 	PATHS.push("244,470-244,522");
 	PATHS.push("186,470-244,470");
 	PATHS.push("186,416-186,470");
-	
+
 	// RIGHT
 	PATHS.push("422,26-422,470");
 	PATHS.push("304,26-518,26");
@@ -57,31 +57,31 @@ function initPaths() {
 	PATHS.push("518,470-518,522");
 	PATHS.push("304,150-304,204");
 	PATHS.push("304,150-362,150");
-	PATHS.push("362,98-362,150");	
+	PATHS.push("362,98-362,150");
 	PATHS.push("304,470-304,522");
 	PATHS.push("304,470-362,470");
 	PATHS.push("362,416-362,470");
-	
+
 }
 
-function getPathsCanevasContext() { 
+function getPathsCanevasContext() {
 	return PATHS_CANVAS_CONTEXT;
 }
 
-function drawPaths() { 
+function drawPaths() {
 	var ctx = getPathsCanevasContext();
-	
+
 	ctx.strokeStyle = "red";
-	
-	for (var i = 0, imax = PATHS.length; i < imax; i ++) { 
-	
+
+	for (var i = 0, imax = PATHS.length; i < imax; i ++) {
+
 		var p = PATHS[i];
-	
+
 		var startX = p.split("-")[0].split(",")[0];
 		var startY = p.split("-")[0].split(",")[1];
 		var endX = p.split("-")[1].split(",")[0];
 		var endY = p.split("-")[1].split(",")[1];
-		
+
 		ctx.beginPath();
 		ctx.moveTo(startX, startY);
 		ctx.lineTo(endX, endY);

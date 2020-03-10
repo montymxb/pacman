@@ -1,39 +1,39 @@
 var BOARD_CANVAS_CONTEXT = null;
 
-function initBoard() { 
+function initBoard() {
 	var canvas = document.getElementById('canvas-board');
 	canvas.setAttribute('width', '550');
 	canvas.setAttribute('height', '550');
-	if (canvas.getContext) { 
+	if (canvas.getContext) {
 		BOARD_CANVAS_CONTEXT = canvas.getContext('2d');
 	}
 }
 
-function getBoardCanevasContext() { 
+function getBoardCanevasContext() {
 	return BOARD_CANVAS_CONTEXT;
 }
 
-function drawBoard(alternate) { 
+function drawBoard(alternate) {
 	var ctx = getBoardCanevasContext();
-	
-	if (alternate && alternate === true) { 
+
+	if (alternate && alternate === true) {
 		ctx.strokeStyle = "#fff";
-	} else { 
+	} else {
 		ctx.strokeStyle = "#193fff";
 	}
-	
+
 	ctx.lineWidth = "2";
 	ctx.beginPath();
-	
-	// UP 
+
+	// UP
 	ctx.moveTo(0, 231);
 	ctx.lineTo(97, 231);
 	ctx.arcTo(99, 231, 99, 228, 5);
 	ctx.lineTo(99, 179);
 	ctx.arcTo(99, 176, 97, 176, 5);
-	ctx.lineTo(12, 176);		
+	ctx.lineTo(12, 176);
 	ctx.arcTo(1, 176, 1, 165, 12);
-	ctx.lineTo(1, 10);		
+	ctx.lineTo(1, 10);
 	ctx.arcTo(1, 1, 10, 1, 12);
 	ctx.lineTo(536, 1);
 	ctx.arcTo(547, 1, 547, 12, 12);
@@ -45,7 +45,7 @@ function drawBoard(alternate) {
 	ctx.arcTo(449, 231, 451, 231, 5);
 	ctx.lineTo(550, 231);
 	ctx.stroke();
-	
+
 	ctx.moveTo(0, 238);
 	ctx.lineTo(98, 238);
 	ctx.arcTo(106, 238, 106, 232, 12);
@@ -73,8 +73,8 @@ function drawBoard(alternate) {
 	ctx.arcTo(442, 238, 445, 238, 12);
 	ctx.lineTo(550, 238);
 	ctx.stroke();
-	
-	// DOWN 
+
+	// DOWN
 	ctx.moveTo(0, 283);
 	ctx.lineTo(97, 283);
 	ctx.arcTo(99, 283, 99, 286, 5);
@@ -94,7 +94,7 @@ function drawBoard(alternate) {
 	ctx.arcTo(450, 283, 453, 283, 5);
 	ctx.lineTo(550, 283);
 	ctx.stroke();
-	
+
 	ctx.moveTo(0, 276);
 	ctx.lineTo(99, 276);
 	ctx.arcTo(107, 276, 107, 282, 12);
@@ -130,7 +130,7 @@ function drawBoard(alternate) {
 	ctx.arcTo(442, 276, 448, 276, 12);
 	ctx.lineTo(550, 276);
 	ctx.stroke();
-	
+
 	// LEFT
 	ctx.roundRect(50, 45, 107, 79, 5);
 	ctx.stroke();
@@ -142,7 +142,7 @@ function drawBoard(alternate) {
 	ctx.stroke();
 	ctx.roundRect(148, 276, 165, 345, 5);
 	ctx.stroke();
-	
+
 	ctx.moveTo(56, 504);
 	ctx.lineTo(220, 504);
 	ctx.arcTo(223, 504, 223, 501, 5);
@@ -150,18 +150,18 @@ function drawBoard(alternate) {
 	ctx.arcTo(223, 489, 220, 489, 5);
 	ctx.lineTo(168, 489);
 	ctx.arcTo(165, 489, 165, 486, 5);
-	ctx.lineTo(165, 439);		
+	ctx.lineTo(165, 439);
 	ctx.arcTo(165, 436, 162, 436, 5);
 	ctx.lineTo(152, 436);
 	ctx.arcTo(149, 436, 149, 439, 5);
-	ctx.lineTo(149, 486);		
+	ctx.lineTo(149, 486);
 	ctx.arcTo(149, 489, 146, 489, 5);
 	ctx.lineTo(54, 489);
 	ctx.arcTo(51, 489, 51, 492, 5);
 	ctx.lineTo(51, 501);
 	ctx.arcTo(51, 504, 54, 504, 5);
 	ctx.stroke();
-	
+
 	ctx.moveTo(55, 382);
 	ctx.lineTo(104, 382);
 	ctx.arcTo(107, 382, 107, 385, 5);
@@ -176,9 +176,9 @@ function drawBoard(alternate) {
 	ctx.lineTo(52, 385);
 	ctx.arcTo(52, 382, 55, 382, 5);
 	ctx.stroke();
-	
+
 	ctx.moveTo(148, 121);
-	ctx.lineTo(148, 236);		
+	ctx.lineTo(148, 236);
 	ctx.arcTo(148, 239, 151, 239, 5);
 	ctx.lineTo(162, 239);
 	ctx.arcTo(165, 239, 165, 236, 5);
@@ -195,7 +195,7 @@ function drawBoard(alternate) {
 	ctx.lineTo(151, 117);
 	ctx.arcTo(148, 117, 148, 120, 5);
 	ctx.stroke();
-	
+
 	// RIGHT
 	ctx.roundRect(442, 45, 498, 79, 5);
 	ctx.stroke();
@@ -207,7 +207,7 @@ function drawBoard(alternate) {
 	ctx.stroke();
 	ctx.roundRect(383, 276, 400, 345, 5);
 	ctx.stroke();
-	
+
 	ctx.moveTo(330, 504);
 	ctx.lineTo(494, 504);
 	ctx.arcTo(497, 504, 497, 501, 5);
@@ -226,7 +226,7 @@ function drawBoard(alternate) {
 	ctx.lineTo(325, 500);
 	ctx.arcTo(325, 504, 328, 504, 5);
 	ctx.stroke();
-	
+
 	ctx.moveTo(495, 382);
 	ctx.lineTo(445, 382);
 	ctx.arcTo(442, 382, 442, 385, 5);
@@ -241,7 +241,7 @@ function drawBoard(alternate) {
 	ctx.lineTo(498, 385);
 	ctx.arcTo(498, 382, 495, 382, 5);
 	ctx.stroke();
-	
+
 	ctx.moveTo(400, 121);
 	ctx.lineTo(400, 236);
 	ctx.arcTo(400, 239, 397, 239, 5);
@@ -260,7 +260,7 @@ function drawBoard(alternate) {
 	ctx.lineTo(397, 117);
 	ctx.arcTo(400, 117, 400, 120, 5);
 	ctx.stroke();
-	
+
 	// CENTER
 	ctx.moveTo(212, 117);
 	ctx.lineTo(338, 117);
@@ -318,7 +318,7 @@ function drawBoard(alternate) {
 	ctx.lineTo(208, 439);
 	ctx.arcTo(208, 436, 211, 436, 5);
 	ctx.stroke();
-	
+
 	ctx.moveTo(254, 223);
 	ctx.lineTo(207, 223);
 	ctx.lineTo(207, 292);
@@ -333,34 +333,34 @@ function drawBoard(alternate) {
 	ctx.lineTo(254, 230);
 	ctx.lineTo(254, 223);
 	ctx.stroke();
-	
+
 	ctx.closePath();
 }
 
-function drawBoardDoor() { 
+function drawBoardDoor() {
 	var ctx = getBoardCanevasContext();
-	
+
 	ctx.strokeStyle = "white";
 	ctx.lineWidth = "5";
-	
+
 	ctx.beginPath();
 	ctx.moveTo(255, 226);
 	ctx.lineTo(295, 226);
 	ctx.stroke();
-	
+
 	ctx.closePath();
 }
-function eraseBoardDoor() { 
+function eraseBoardDoor() {
 	var ctx = getBoardCanevasContext();
 	//ctx.translate(FRUITS_POSITION_X - (FRUITS_SIZE / 2), FRUITS_POSITION_Y - (FRUITS_SIZE / 2));
 	//ctx.save();
 	//ctx.globalCompositeOperation = "destination-out";
-	
+
 	//ctx.beginPath();
 	//ctx.translate(FRUITS_POSITION_X - (FRUITS_SIZE / 2), FRUITS_POSITION_Y - (FRUITS_SIZE / 2));
 	ctx.clearRect(255, 220, 40, 10);
 	//ctx.fill();
 	//ctx.closePath();
-	
+
 	//ctx.restore();
 }
