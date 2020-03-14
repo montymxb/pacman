@@ -31,7 +31,7 @@ var HELP_TIMER = -1;
 
 // Controls Speed of Ghosts in the game
 // Increasing this decreases delay, increasing gameplay speed
-var GameSpeedRatio = 10;
+var GameSpeedRatio = 5;
 var agentPlaying = true;
 
 //
@@ -89,6 +89,17 @@ function initGame(newgame) {
 		ctx.arc(x, y, 4, 0, 2 * Math.PI, false);
 		ctx.fill();
 		ctx.closePath();
+
+		if(LEVEL == 1) {
+			// setup the scorer for the first time
+			Scorer.setup();
+		}
+
+	}
+
+	if(LEVEL == 1) {
+		// start run for the scorer
+		Scorer.startRun();
 	}
 
 	initBoard();
@@ -202,30 +213,49 @@ function go() {
 
 	if(agentPlaying && !Agent.isActive()) {
 		// get position from the agent instead
-		// turn on agent to submit callbacks
+
+		// ALGOS //
 		Agent.setAlgo(Algo.A_starM);
+		//Agent.setAlgo(Algo.minimax);
+		//Agent.setAlgo(Algo.dfs);
+		//Agent.setAlgo(Algo.bfs);
+
+		//Agent.DEBUG = true;
+		Algo.useAlphaBetaPruning = true;
 
 		// killer move
 		//Agent.useKillerFoodMove = true;
 
+		// HEURISTICS //
 		// bugged?
 		// food count
 		//Agent.setHeuristic(Heuristic.food_countM);
+
 		// closest food distance
 		//Agent.setHeuristic(Heuristic.food_distanceM);
+
 		// closest ghost distance
 		//Agent.setHeuristic(Heuristic.ghost_distanceM);
+
 		// food or ghosts if too close
+		// TODO RERUN looking for 1 LEVEL completion
 		//Agent.setHeuristic(Heuristic.combo_ghost_foodM);
-		// TODO chase mechanic is broken?
+
 		// run, find food, and chase ghosts
-		Agent.setHeuristic(Heuristic.combo_run_chase_find_foodM);
-		// get food and keep distance
+		// observes!!
+		//Agent.setHeuristic(Heuristic.combo_run_chase_find_foodM);
+
+		// get food and keep distance (always gets stuck in tunnels)
 		//Agent.setHeuristic(Heuristic.comboM);
 
-		//Agent.setHeuristic(Heuristic.food_count);
-		//Agent.setHeuristic(Heuristic.ghost_distance);
-		//Agent.setHeuristic(Heuristic.combo_ghost_food);
+		// get food & avoid ghosts, stay towards center of food positions
+		// TODO best???
+		//Agent.setHeuristic(Heuristic.combo_run_or_foodandghostsM);
+
+		// combination of ghost distance & food count
+		// TODO RERUN THIS ONE AS WELL (looking for 2 LEVEL completions)
+		Agent.setHeuristic(Heuristic.combo_ghostDist_foodCount);
+
 		Agent.activate();
 
 	}

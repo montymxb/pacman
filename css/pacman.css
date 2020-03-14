@@ -1,42 +1,42 @@
-::-webkit-scrollbar { 
+::-webkit-scrollbar {
 	width: 16px;
 }
-::-webkit-scrollbar-track { 
+::-webkit-scrollbar-track {
 	background-color: #333;
-} 
-::-webkit-scrollbar-thumb { 
+}
+::-webkit-scrollbar-thumb {
 	background-color: #424e69;
 }
-::-webkit-scrollbar-thumb:hover { 
+::-webkit-scrollbar-thumb:hover {
 	background-color: #8295d5;
 }
 
-@font-face { 
-	font-family: 'Quadrit'; 
-	src: url('../css/Quadrit.ttf'); 
+@font-face {
+	font-family: 'Quadrit';
+	src: url('../css/Quadrit.ttf');
 }
 
-* { 
+* {
 	font-family: Quadrit, sans-serif;
 	font-size: 20px;
 	color: #fff;
 }
 
-html, body { 
+html, body {
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	width: 100%;
 	height: 100%;
 }
-html  { 
+html  {
 	background-color: #000;
 }
-body { 
+body {
 	position: relative;
 }
 
 
-#score, #highscore  { 
+#score, #highscore  {
 	position: absolute;
 	display: inline;
 	top: 70px;
@@ -44,10 +44,10 @@ body {
 	padding: 0px;
 	width: 160px;
 }
-#highscore { 
+#highscore {
 	left: 180px;
 }
-#score h2, #score span, #highscore h2, #highscore span { 
+#score h2, #score span, #highscore h2, #highscore span {
 	display: block;
 	text-transform: uppercase;
 	font-weight: normal;
@@ -59,13 +59,13 @@ body {
 	text-align: right;
 	padding-right: 15px;
 }
-#score span, #highscore span { 
+#score span, #highscore span {
 	padding-right: 0px;
 }
-#highscore span { 
+#highscore span {
 	padding-right: 40px;
 }
-#message { 
+#message {
 	position: absolute;
 	display: inline;
 	top: 413px;
@@ -81,11 +81,11 @@ body {
 	color: #fff200;
 	text-align: center;
 }
-#message.red { 
+#message.red {
 	color: red;
 }
 
-span.combo, span.fruits { 
+span.combo, span.fruits {
 	position: absolute;
 	letter-spacing: 1.5px;
 	font-size: 14px;
@@ -93,7 +93,7 @@ span.combo, span.fruits {
 	font-weight: normal;
 }
 
-#panel, #home { 
+#panel, #home {
 	width: 550px;
 	height: 690px;
 	margin: auto;
@@ -103,35 +103,35 @@ span.combo, span.fruits {
 	position: absolute;
 	padding: 5px 10px 10px 10px;
 	background-color: #000;
-}			
-#board, #canvas-board, #canvas-paths, #canvas-fruits, #canvas-pacman, #canvas-bubbles, #canvas-ghost-blinky, #canvas-ghost-pinky, #canvas-ghost-inky, #canvas-ghost-clyde { 
+}
+#board, #canvas-board, #canvas-paths, #canvas-fruits, #canvas-pacman, #canvas-bubbles, #canvas-ghost-blinky, #canvas-ghost-pinky, #canvas-ghost-inky, #canvas-ghost-clyde, #canvas-debug { 
 	width: 550px;
 	height: 550px;
 	position: absolute;
 }
-#canvas-paths { 
+#canvas-paths {
 	display: none;
 }
-#board {  
+#board {
 	position: relative;
 }
 
-#canvas-lifes, #canvas-level-fruits { 
+#canvas-lifes, #canvas-level-fruits {
 	height: 30px;
 	top: 670px;
 	position: absolute;
 	z-index: 111111;
 }
-#canvas-lifes { 
+#canvas-lifes {
 	width: 120px;
 	left: 50px;
 }
-#canvas-level-fruits { 
+#canvas-level-fruits {
 	width: 265px;
 	right: 50px;
 }
 
-#control { 
+#control {
 	position: absolute;
 	margin: auto;
 	left: 0px;
@@ -143,7 +143,7 @@ span.combo, span.fruits {
 	opacity: 0.7;
 	display: none;
 }
-#control-up, #control-down, #control-up-second, #control-down-second, #control-left, #control-right, #control-up-big, #control-down-big, #control-left-big, #control-right-big { 
+#control-up, #control-down, #control-up-second, #control-down-second, #control-left, #control-right, #control-up-big, #control-down-big, #control-left-big, #control-right-big {
 	position: absolute;
 	margin: auto;
 	background-repeat: no-repeat;
@@ -154,40 +154,40 @@ span.combo, span.fruits {
 	height: 64px;
 	padding: 5px;
 }
-#control-up { 
+#control-up {
 	top: 0px;
 	left: 70px;
 	background-image: url('../img/move-up.png');
 }
-#control-down { 
+#control-down {
 	bottom: 0px;
 	right: 70px;
 	background-image: url('../img/move-down.png');
 }
-#control-up-second { 
+#control-up-second {
 	top: 0px;
 	right: 70px;
 	background-image: url('../img/move-up.png');
 }
-#control-down-second{ 
+#control-down-second{
 	bottom: 0px;
 	left: 70px;
 	background-image: url('../img/move-down.png');
 }
-#control-left { 
+#control-left {
 	bottom: 0px;
 	top: 0px;
 	left: 0px;
 	background-image: url('../img/move-left.png');
 }
-#control-right { 
+#control-right {
 	bottom: 0px;
 	top: 0px;
 	right: 0px;
 	background-image: url('../img/move-right.png');
 }
 
-#control-up-big, #control-down-big, #control-left-big, #control-right-big { 
+#control-up-big, #control-down-big, #control-left-big, #control-right-big {
 	position: absolute;
 	opacity: 0.2;
 	margin: auto;
@@ -196,7 +196,7 @@ span.combo, span.fruits {
 	background-size: 98px;
 	z-index: 999999;
 }
-#control-up-big { 
+#control-up-big {
 	bottom: 10px;
 	left: 0px;
 	right: 0px;
@@ -204,7 +204,7 @@ span.combo, span.fruits {
 	height: 125px;
 	background-image: url('../img/move-up-big.png');
 }
-#control-down-big { 
+#control-down-big {
 	bottom: -120px;
 	left: 0px;
 	right: 0px;
@@ -212,14 +212,14 @@ span.combo, span.fruits {
 	height: 125px;
 	background-image: url('../img/move-down-big.png');
 }
-#control-left-big { 
+#control-left-big {
 	left: 80px;
 	bottom: -90px;
 	width: 125px;
 	height: 175px;
 	background-image: url('../img/move-left-big.png');
 }
-#control-right-big { 
+#control-right-big {
 	right: 80px;
 	bottom: -90px;
 	width: 125px;
@@ -229,7 +229,7 @@ span.combo, span.fruits {
 
 
 
-h1 { 
+h1 {
 	margin: 0px 0px 74px 0px;
 	padding: 0px;
 	font-size: 24px;
@@ -238,7 +238,7 @@ h1 {
 	text-transform: uppercase;
 	font-style: normal;
 }
-h3 { 
+h3 {
 	margin: 0px;
 	padding: 0px;
 	font-size: 20px;
@@ -248,28 +248,28 @@ h3 {
 	font-style: normal;
 }
 
-.sound { 
+.sound {
 	position: absolute;
 }
-.sound img { 
+.sound img {
 	height: 28px;
 }
-#home .sound { 
+#home .sound {
 	bottom: 0px;
 	right: 5px;
 }
-#panel .sound { 
+#panel .sound {
 	top: 77px;
 	right: 5px;
 }
 
-.github { 
+.github {
 	position: absolute;
 	bottom: 0px;
 	left: 5px;
 }
 
-.putchu { 
+.putchu {
 	position: absolute;
 	top: 450px;
 	left: 130px;
@@ -277,20 +277,20 @@ h3 {
 	padding: 10px 25px 40px 95px;
 	text-transform: uppercase;
 }
-.putchu img { 
-	position: absolute; 
+.putchu img {
+	position: absolute;
 	bottom: -5px;
 	left: 5px;
 }
-#panel .putchu { 
+#panel .putchu {
 	top: 0px;
-	right: 5px;	
+	right: 5px;
 	left: auto;
 	font-size: 16px;
 	padding: 10px 25px 30px 65px;
 }
 
-.help-button { 
+.help-button {
 	position: absolute;
 	text-align: center;
 	bottom: 8px;
@@ -304,22 +304,22 @@ h3 {
 	color: #78abf7;
 	transition: color 1.5s;
 }
-.help-button.yo { 
+.help-button.yo {
 	color: #333;
 }
-#panel .help-button { 
+#panel .help-button {
 	top: -510px;
 	height: 25px;
 }
 
-#help h2 { 
+#help h2 {
 	margin: 0px 0px 10px 0px;
 	color: #d43b3b;
 	text-transform: uppercase;
 	font-weight: bold;
 	font-size: 26px;
 }
-#help { 
+#help {
 	position: absolute;
 	width: 420px;
 	height: 265px;
@@ -337,20 +337,20 @@ h3 {
 	display: none;
 	cursor: pointer;
 }
-#help  table  tr  td { 
+#help  table  tr  td {
 	font-size: 16px;
 	letter-spacing: 1px;
 }
-#help  table  tr  td:first-child { 
+#help  table  tr  td:first-child {
 	color: #f4c030;
 	font-weight: bold;
 	text-align: right;
 }
-#help  table  tr  td:last-child { 
+#help  table  tr  td:last-child {
 	text-align: left;
 }
 
-#sound { 
+#sound {
 	position: absolute;
 }
 
@@ -365,63 +365,63 @@ h3 {
 
 
 
-@media screen and (min-height:1200px), screen and (min-device-height : 1200px) { 
-	#panel, #home { 
+@media screen and (min-height:1200px), screen and (min-device-height : 1200px) {
+	#panel, #home {
 		zoom: 135%;
 	}
 }
 
-@media screen and (max-width:1024px), screen and (min-device-width : 768px) and (max-device-width : 1024px) { 
-	#home .help-button, #panel .help-button, #home .github, #sound, .sound { 
+@media screen and (max-width:1024px), screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+	#home .help-button, #panel .help-button, #home .github, #sound, .sound {
 		display: none;
 	}
-	#panel, #home { 
+	#panel, #home {
 		zoom: 105%;
 	}
-	#control-up-big, #control-down-big, #control-left-big, #control-right-big { 
-		display: inline; 
-	} 
+	#control-up-big, #control-down-big, #control-left-big, #control-right-big {
+		display: inline;
+	}
 
 }
-@media screen and (max-height:640px), screen and (min-device-height : 480px) and (max-device-height : 640px) and (-webkit-device-pixel-ratio: 3) { 
-	#panel, #home { 
+@media screen and (max-height:640px), screen and (min-device-height : 480px) and (max-device-height : 640px) and (-webkit-device-pixel-ratio: 3) {
+	#panel, #home {
 		zoom: 60%;
 	}
-	#control-up-big, #control-down-big, #control-left-big, #control-right-big { 
-		display: inline; 
-	} 
-	#home .help-button, #panel .help-button, #home .github, #sound, .sound { 
+	#control-up-big, #control-down-big, #control-left-big, #control-right-big {
+		display: inline;
+	}
+	#home .help-button, #panel .help-button, #home .github, #sound, .sound {
 		display: none;
 	}
-	h1, #canvas-panel-title-pacman { 
+	h1, #canvas-panel-title-pacman {
 		visibility: hidden;
 	}
 }
-@media screen and (max-height:480px), screen and (min-device-height : 320px) and (max-device-height : 480px) { 
-	#panel, #home { 
+@media screen and (max-height:480px), screen and (min-device-height : 320px) and (max-device-height : 480px) {
+	#panel, #home {
 		zoom: 55%;
 	}
-	#control-up-big, #control-down-big, #control-left-big, #control-right-big { 
-		display: inline; 
-	} 
-	h1, #canvas-panel-title-pacman, #control-up-second, #control-down-second, #home .help-button, #panel .help-button, #home .github, #sound, .sound { 
+	#control-up-big, #control-down-big, #control-left-big, #control-right-big {
+		display: inline;
+	}
+	h1, #canvas-panel-title-pacman, #control-up-second, #control-down-second, #home .help-button, #panel .help-button, #home .github, #sound, .sound {
 		display: none;
 	}
-	#score, #highscore { 
+	#score, #highscore {
 		top: 0px;
 	}
-	#panel { 
+	#panel {
 		padding-top: 50px;
 	}
-	#canvas-lifes, #canvas-level-fruits { 
+	#canvas-lifes, #canvas-level-fruits {
 		top: 607px;
 	}
-	#control { 
+	#control {
 		bottom: 50px;
 		width: 550px;
 		height: 55px;
 	}
-	#control-up, #control-down, #control-left, #control-right { 
+	#control-up, #control-down, #control-left, #control-right {
 		top: 0px;
 		bottom: 0px;
 		background-size: 48px;
@@ -429,7 +429,7 @@ h3 {
 		height: 48px;
 		padding: 5px;
 	}
-	#message { 
+	#message {
 		top: 347px;
 	}
 }

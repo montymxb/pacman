@@ -150,6 +150,9 @@ function movePacman(direction, test) {
 				PACMAN_POSITION_Y -= (PACMAN_POSITION_STEP + speedUp);
 			}
 
+			// add a move
+			Scorer.addMove();
+
 			if ( PACMAN_POSITION_X === 2 && PACMAN_POSITION_Y === 258 ) {
 				PACMAN_POSITION_X = 548;
 				PACMAN_POSITION_Y = 258;
@@ -278,10 +281,22 @@ function killingPacman() {
 		PACMAN_KILLING_TIMER = -1;
 		erasePacman();
 		if (LIFES > 0) {
+			// retry available
 			lifes(-1);
 			setTimeout('retry()', (PACMAN_RETRY_SPEED));
 		} else {
+			// game over, record game time and stop this run
+			Scorer.addScore(SCORE);
+			Scorer.recordGameTime();
+			Scorer.stopRun();
 			gameover();
+
+			if(Scorer.checkToRunAgain()) {
+				// run once more
+				initGame();
+
+			}
+
 		}
 	}
 }
@@ -300,9 +315,13 @@ function testGhostPacman(ghost) {
 	if (positionX <= PACMAN_POSITION_X + PACMAN_GHOST_GAP && positionX >= PACMAN_POSITION_X - PACMAN_GHOST_GAP && positionY <= PACMAN_POSITION_Y + PACMAN_GHOST_GAP && positionY >= PACMAN_POSITION_Y - PACMAN_GHOST_GAP ) {
 		eval('var state = GHOST_' + ghost.toUpperCase() + '_STATE');
 		if (state === 0) {
+			Scorer.recordLifeTime();
 			killPacman();
+
 		} else if (state === 1) {
 			startEatGhost(ghost);
+			Scorer.addGhostEaten();
+
 		}
 	}
 }
@@ -339,12 +358,20 @@ function testBubblesPacman() {
 					score( SCORE_SUPER_BUBBLE );
 					playEatPillSound();
 					affraidGhosts();
+
 				} else {
 					score( SCORE_BUBBLE );
 					playEatingSound();
+
 				}
+
+				// got a bubble...
+				Scorer.addCapsuleEaten();
+
 				BUBBLES_COUNTER --;
 				if ( BUBBLES_COUNTER === 0 ) {
+					// add score for winning a level!
+					Scorer.addLevelFinished();
 					win();
 				}
 			} else {

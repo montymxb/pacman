@@ -5,6 +5,14 @@
 // and safely restore state back
 //
 
+// returns approx continuous position from discrete one
+function getContinuousPosition(px, py) {
+  return {
+    x: px * BUBBLES_GAP + PACMAN_SIZE * 2,
+    y: py * BUBBLES_GAP - PACMAN_SIZE
+  };
+}
+
 function getQuantizedPosition(px, py) {
   var best = 999999;
   var bestPos = 0;
@@ -48,6 +56,8 @@ Model.prototype = {
     var pos = getQuantizedPosition(PACMAN_POSITION_X, PACMAN_POSITION_Y);
     this.pacmanX = pos.x;
     this.pacmanY = pos.y;
+    this.foodCount = 0;
+    this.didEatFood = false;
 
     // store ghost quantized positions
     this.ghostPos = [];
@@ -60,17 +70,20 @@ Model.prototype = {
   	var World = [];
     var bubbleIndex = 0;
   	var gap = ((BUBBLES_X_END - BUBBLES_X_START) / 26)+2.5;
+    this.spaceCount = 0;
   	for (var line = 1, linemax = 29, i = 0, s = 0; line <= linemax; line ++) {
   		var WorldLine = [];
   		var y = getYFromLine(line);
   		for (var x = BUBBLES_X_START, xmax = BUBBLES_X_END, bubble = 1 ; x < xmax; bubble ++, x += BUBBLES_GAP) {
   			if (canAddBubble(line, bubble)) {
   				// bubble
+          this.spaceCount++;
           var bubbleItem = BUBBLES_ARRAY[bubbleIndex];
           var bubbleParams = bubbleItem.split(";");
           if(bubbleParams[4] == "0") {
             // still a bubble to count
             WorldLine.push('F');
+            this.foodCount++;
 
           } else {
             // no longer a bubble, just a path space
@@ -88,9 +101,12 @@ Model.prototype = {
   			) {
   				// open path
   				WorldLine.push('P');
+          this.spaceCount++;
+
   			} else {
   				// wall
   				WorldLine.push('W');
+
   			}
   		}
   		World.push(WorldLine);
@@ -114,6 +130,7 @@ Model.prototype = {
   // 2 = +Y (DOWN)
   // 3 = -X (LEFT)
   // 4 = -Y (UP)
+  // checks whether pacman can move
   canMove: function(dir) {
     if(dir == 1) {
       return this.isValidSpace(this.pacmanX+1,this.pacmanY);
@@ -123,7 +140,19 @@ Model.prototype = {
       return this.isValidSpace(this.pacmanX-1,this.pacmanY);
     } else if(dir == 4) {
       return this.isValidSpace(this.pacmanX,this.pacmanY-1);
+    }
+  },
 
+  // checks whether a ghost can move
+  canGhostMove: function(i,dir) {
+    if(dir == 1) {
+      return this.isValidSpace(this.ghostPos[i].x+1,this.ghostPos[i].y);
+    } else if(dir == 2) {
+      return this.isValidSpace(this.ghostPos[i].x,this.ghostPos[i].y+1);
+    } else if(dir == 3) {
+      return this.isValidSpace(this.ghostPos[i].x-1,this.ghostPos[i].y);
+    } else if(dir == 4) {
+      return this.isValidSpace(this.ghostPos[i].x,this.ghostPos[i].y-1);
     }
   },
 
@@ -139,16 +168,41 @@ Model.prototype = {
       this.pacmanY-=1;
     }
 
-    if(this.World.length == 0) {
-      console.error("World is not properly initialized yet.");
-    }
-
     // update food
     if(this.World[this.pacmanY][this.pacmanX] == 'F') {
       // change to 'P'
       this.World[this.pacmanY][this.pacmanX] = 'P';
+      this.foodCount--;
       this.didEatFood = true;
 
+    }
+  },
+
+  // indicates whether ghosts share this space with pacman (during model search)
+  areGhostsOnPacman: function() {
+    for(var x = 0; x < 4; x++) {
+      if(this.ghostPos[x].x == this.pacmanX && this.ghostPos[x].y == this.pacmanY) {
+        return true;
+      }
+    }
+    return false;
+  },
+
+  // gets count of all traversible spaces in the quantized world
+  getSpaceCount: function() {
+    return this.spaceCount;
+  },
+
+  // moves a ghost in a given direction
+  moveGhost: function(i,dir) {
+    if(dir == 1) {
+      this.ghostPos[i].x+=1
+    } else if(dir == 2) {
+      this.ghostPos[i].y+=1;
+    } else if(dir == 3) {
+      this.ghostPos[i].x-=1;
+    } else if(dir == 4) {
+      this.ghostPos[i].y-=1;
     }
   },
 
@@ -165,6 +219,7 @@ Model.prototype = {
   },
 
   // stores existing game model to make calculations based on
+  /*
   storePacman: function() {
     this.pacmanDirection = PACMAN_DIRECTION;
     this.pacmanDirTry = PACMAN_DIRECTION_TRY;
@@ -296,11 +351,18 @@ Model.prototype = {
     GHOST_CLYDE_AFFRAID_STATE = this.ghostClyde_AfraidState;
     GHOST_CLYDE_TUNNEL = this.ghostClyde_Tunnel;
   },
+  */
 
   toString: function() {
     if(!this.stringRep) {
-      this.stringRep = JSON.stringify(this);
+      this.stringRep = JSON.stringify({
+        x: this.pacmanX,
+        y: this.pacmanY,
+        fc: this.foodCount
+      });
+      //this.stringRep = JSON.stringify(this);
     }
+
     return this.stringRep;
   }
 };
