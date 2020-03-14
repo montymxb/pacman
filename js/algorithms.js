@@ -820,7 +820,7 @@ var Algo = {
     m.direction = PACMAN_DIRECTION;
     m.storeWorld2();
 
-    var fc = m.foodCount;
+    //var fc = m.foodCount;
 
     // quantize world into model
     // setup a frontier array
@@ -895,7 +895,7 @@ var Algo = {
     m.direction = PACMAN_DIRECTION;
     m.storeWorld2();
 
-    var fc = m.foodCount;
+    //var fc = m.foodCount;
 
     // quantize world into model
     // setup a frontier array

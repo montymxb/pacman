@@ -220,7 +220,7 @@ function go() {
 		//Agent.setAlgo(Algo.dfs);
 		//Agent.setAlgo(Algo.bfs);
 
-		//Agent.DEBUG = true;
+		Agent.DEBUG = true;
 		Algo.useAlphaBetaPruning = true;
 
 		// killer move
