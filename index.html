@@ -262,6 +262,24 @@
 		</div>
 
 		<textarea id="results" style="margin:8px;color:black;font-family:'Avenir';font-size:12px">start</textarea>
+		<!--Change the current algo-->
+		<div id="modes" style="color:white;font-family:'Avenir';font-size:12px;width:150px">
+			<p id="current-setup">Running A* w/ Combination ghost distance and food distance</p>
+			<p>Algos</p>
+			<input type="button" value="A*" onclick="setCurrentAlgo(0)">
+			<input type="button" value="Minimax" onclick="setCurrentAlgo(1)">
+			<input type="button" value="DFS" onclick="setCurrentAlgo(2)">
+			<input type="button" value="BFS" onclick="setCurrentAlgo(3)">
+			<p>Heuristics</p>
+			<input type="button" value="Food Count" onclick="setCurrentHeuristic(0)">
+			<input type="button" value="Closest Food Distance" onclick="setCurrentHeuristic(1)">
+			<input type="button" value="Closest Ghost Distance" onclick="setCurrentHeuristic(2)">
+			<input type="button" value="Food or Ghost Distance if too close" onclick="setCurrentHeuristic(3)">
+			<input type="button" value="Run, find food, chase ghosts" onclick="setCurrentHeuristic(4)">
+			<input type="button" value="Get food and keep distance" onclick="setCurrentHeuristic(5)">
+			<input type="button" value="Get food and avoid ghosts, stay in center of map" onclick="setCurrentHeuristic(6)">
+			<input type="button" value="Combination ghost distance and food count" onclick="setCurrentHeuristic(7)">
+		</div>
 
 	</body>
 

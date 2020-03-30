@@ -104,7 +104,7 @@ span.combo, span.fruits {
 	padding: 5px 10px 10px 10px;
 	background-color: #000;
 }
-#board, #canvas-board, #canvas-paths, #canvas-fruits, #canvas-pacman, #canvas-bubbles, #canvas-ghost-blinky, #canvas-ghost-pinky, #canvas-ghost-inky, #canvas-ghost-clyde, #canvas-debug { 
+#board, #canvas-board, #canvas-paths, #canvas-fruits, #canvas-pacman, #canvas-bubbles, #canvas-ghost-blinky, #canvas-ghost-pinky, #canvas-ghost-inky, #canvas-ghost-clyde, #canvas-debug {
 	width: 550px;
 	height: 550px;
 	position: absolute;
@@ -432,4 +432,20 @@ h3 {
 	#message {
 		top: 347px;
 	}
+}
+
+#modes p {
+	font-family: 'Avenir';
+	color: white;
+	font-size: 14px;
+}
+
+#modes input[type=button] {
+	font-family: 'Avenir';
+	color: black;
+	background: #fff;
+	padding: 4px;
+	font-size: 12px;
+	display: block;
+	width: 300px;
 }

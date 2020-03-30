@@ -264,6 +264,83 @@ function go() {
 
 	moveGhosts();
 }
+
+
+var AlgoIndex = 0;
+function setCurrentAlgo(index) {
+	AlgoIndex = index;
+	updateAlgoAndHeuristic(AlgoIndex,HeuristicIndex);
+}
+
+var HeuristicIndex = 7;
+function setCurrentHeuristic(index) {
+	HeuristicIndex = index;
+	updateAlgoAndHeuristic(AlgoIndex,HeuristicIndex);
+}
+
+function updateAlgoAndHeuristic(index,i2) {
+	var e = "";
+	if(index == 0) {
+		Agent.setAlgo(Algo.A_starM);
+		e = "A* w/ ";
+
+	} else if(index == 1) {
+		Agent.setAlgo(Algo.minimax);
+		e = "Minimax w/ ";
+
+	} else if(index == 2) {
+		Agent.setAlgo(Algo.dfs);
+		e = "DFS w/ no heuristic";
+
+	} else {
+		Agent.setAlgo(Algo.bfs);
+		e = "BFS w/ no heuristic";
+
+	}
+
+
+	if(index < 2) {
+		index = i2;
+		if(index == 0) {
+			Agent.setHeuristic(Heuristic.food_countM);
+			e+= "Food Count";
+
+		} else if(index == 1) {
+			Agent.setHeuristic(Heuristic.food_distanceM);
+			e+= "Closest Food Distance";
+
+		} else if(index == 2) {
+			Agent.setHeuristic(Heuristic.ghost_distanceM);
+			e+= "Closest Ghost Distance";
+
+		} else if(index == 3) {
+			Agent.setHeuristic(Heuristic.combo_ghost_foodM);
+			e+= "Food or Ghost Distance if too close";
+
+		} else if(index == 4) {
+			Agent.setHeuristic(Heuristic.combo_run_chase_find_foodM);
+			e+= "Run, find food, chase ghosts";
+
+		} else if(index == 5) {
+			Agent.setHeuristic(Heuristic.comboM);
+			e+= "Get food and keep distance";
+
+		} else if(index == 6) {
+			Agent.setHeuristic(Heuristic.combo_run_or_foodandghostsM);
+			e+= "Get food and avoid ghosts, stay in center of map";
+
+		} else {
+			Agent.setHeuristic(Heuristic.combo_ghostDist_foodCount);
+			e+= "Combination ghost distance and food count";
+
+		}
+	}
+
+	document.getElementById("current-setup").innerHTML = e;
+	retry();
+}
+
+
 function startTimes() {
 	if (TIME_GENERAL_TIMER === -1) {
 		TIME_GENERAL_TIMER = setInterval("times()", 1000);
